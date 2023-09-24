@@ -134,7 +134,7 @@ if selected == "Top Charts":
     
         with col2:
             st.markdown("### :Blue[District]")
-            mycursor.execute(f"select district, sum(Registered_User) as Total_Users, sum(app_opens) as Total_Appopens from map_user where year = {Year} and quarter = {Quarter} group by district order by Total_Users desc limit 10")
+            mycursor.execute(f"select district, sum(RegisteredUser) as Total_Users, sum(app_opens) as Total_Appopens from map_user where year = {Year} and quarter = {Quarter} group by district order by Total_Users desc limit 10")
             df = pd.DataFrame(mycursor.fetchall(), columns=['District', 'Total_Users','Total_Appopens'])
             df.Total_Users = df.Total_Users.astype(float)
             fig = px.bar(df,
